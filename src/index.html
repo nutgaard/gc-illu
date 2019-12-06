@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="heap.less">
+    <link rel="stylesheet" href="memory.less">
+
+    <script>
+        function createGrid(selector, rows, columns, status = []) {
+            const container = document.querySelector(selector);
+            container.style.gridTemplateRows = `repeat(${rows}, 30px)`;
+            container.style.gridTemplateColumns = `repeat(${columns}, 30px)`;
+            new Array(rows * columns)
+                .fill(0)
+                .map((_, i) => {
+                    if (status.length > i) {
+                        return status[i];
+                    }
+                    return null;
+                })
+                .forEach((status) => {
+                    const cell = document.createElement('i');
+                    status && cell.classList.add(status);
+                    container.appendChild(cell);
+                });
+        }
+    </script>
+</head>
+
+<body style="background: transparent">
+<div class="heap">
+    <span class="box eden">Eden space</span>
+    <span class="box survivor">
+        <div>
+            <span>S0</span>
+            <span>S1</span>
+        </div>
+        <span>Survivor space</span>
+    </span>
+    <span class="box tenure">Tenured space</span>
+</div>
+
+<div id="memory-before" class="memory">
+    <span class="box outer">
+        <i style="width: 50px"></i>
+        <i style="width: 30px"></i>
+        <i style="width: 100px"></i>
+        <i style="width: 60px"></i>
+        <i style="width: 50px"></i>
+        <i style="width: 10px"></i>
+        <i style="width: 20px"></i>
+        <i style="width: 100px"></i>
+        <i style="width: 180px"></i>
+    </span>
+</div>
+
+<div id="memory-after" class="memory">
+    <span class="box outer">
+        <i style="width: 50px"></i>
+        <i style="width: 30px" class="free"></i>
+        <i style="width: 100px" class="free"></i>
+        <i style="width: 60px"></i>
+        <i style="width: 50px"></i>
+        <i style="width: 10px" class="free"></i>
+        <i style="width: 20px"></i>
+        <i style="width: 100px" class="free"></i>
+        <i style="width: 180px"></i>
+    </span>
+</div>
+
+<div id="memory-after-compact" class="memory">
+    <span class="box outer">
+        <i style="width: 50px"></i>
+        <i style="width: 30px" class="free compacted"></i>
+        <i style="width: 100px" class="free compacted"></i>
+        <i style="width: 60px"></i>
+        <i style="width: 50px"></i>
+        <i style="width: 10px" class="free compacted"></i>
+        <i style="width: 20px"></i>
+        <i style="width: 100px" class="free compacted"></i>
+        <i style="width: 180px"></i>
+    </span>
+</div>
+
+<div id="memory-partition" class="memory">
+    <div class="partition">
+        <span class="box outer">
+            <i style="width: 50px"></i>
+            <i style="width: 30px"></i>
+            <i style="width: 100px"></i>
+            <i style="width: 60px"></i>
+        </span>
+        <span class="box outer">
+            <i style="width: 50px" class="free"></i>
+        </span>
+    </div>
+</div>
+
+<div id="memory-partition-marked" class="memory">
+    <div class="partition">
+        <span class="box outer">
+            <i style="width: 50px"></i>
+            <i style="width: 30px" class="marked"></i>
+            <i style="width: 10px" class="marked"></i>
+            <i style="width: 50px"></i>
+            <i style="width: 20px" class="marked"></i>
+            <i style="width: 20px"></i>
+            <i style="width: 10px"></i>
+            <i style="width: 15px" class="marked"></i>
+            <i style="width: 35px"></i>
+        </span>
+        <span class="box outer">
+            <i style="width: 50px" class="free"></i>
+        </span>
+    </div>
+</div>
+
+<div id="memory-partition-copied" class="memory">
+    <div class="partition">
+        <span class="box outer">
+            <i style="width: 50px" class="free"></i>
+        </span>
+        <span class="box outer">
+            <i style="width: 50px"></i>
+            <i style="width: 30px" class="free compacted"></i>
+            <i style="width: 10px" class="free compacted"></i>
+            <i style="width: 50px"></i>
+            <i style="width: 20px" class="free compacted"></i>
+            <i style="width: 20px"></i>
+            <i style="width: 10px"></i>
+            <i style="width: 15px" class="free compacted"></i>
+            <i style="width: 35px"></i>
+        </span>
+    </div>
+</div>
+
+<div id="memory-grid" class="memory">
+    <span class="box outer grid"></span>
+</div>
+
+<script>
+    createGrid('#memory-grid .grid', 6, 8, ['marked',,,,'marked',,,,,,,,,,,'free',,,,,,,,,,'free'])
+</script>
+
+</body>
+
+</html>

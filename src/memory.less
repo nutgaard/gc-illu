@@ -1,0 +1,62 @@
+.memory {
+  display: inline-flex;
+  width: 760px;
+
+  .box {
+    background-color: #CECECE;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &.outer {
+      width: 100%;
+    }
+
+    &.grid {
+      background-color: transparent;
+      width: auto;
+      display: grid;
+      grid-gap: 5px 3px;
+
+      > i {
+        border: 1px solid #b4b4b4;
+
+        &.free {
+          background-color: #CECECE;
+        }
+      }
+    }
+
+    > i {
+      display: inline-block;
+      height: 30px;
+      background-color: #6D7ABB;
+
+      &.free {
+        background-color: transparent;
+      }
+
+      &.marked {
+        background-color: #FF8034;
+      }
+
+      &.compacted {
+        width: 1px !important;
+      }
+
+      &.compacted + .compacted{
+        width: 0px !important;
+      }
+    }
+  }
+
+  .partition {
+    width: 100%;
+    .box.outer {
+      width: calc(50% - 0.38rem);
+    }
+    .box:first-child {
+      margin-right: 0.5rem;
+    }
+  }
+}
