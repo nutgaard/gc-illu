@@ -22,6 +22,7 @@ async function screenshot(page, selector, path, padding = 0) {
 async function takeScreenshots(page, mode) {
     await screenshot(page, `.heap`, `img/heap-${mode}.png`);
     await screenshot(page, `#memory-before`, `img/memory-before-${mode}.png`);
+    await screenshot(page, `#memory-marked`, `img/memory-marked-${mode}.png`);
     await screenshot(page, `#memory-after`, `img/memory-after-${mode}.png`);
     await screenshot(page, `#memory-after-compact`, `img/memory-after-compact-${mode}.png`);
 
