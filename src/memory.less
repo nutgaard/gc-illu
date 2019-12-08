@@ -1,3 +1,8 @@
+:root {
+  --eden: rgb(22, 219, 196);
+  --survivor: rgb(255, 240, 43);
+  --tenured: rgb(255, 91, 91);
+}
 .memory {
   display: inline-flex;
   width: 760px;
@@ -23,6 +28,16 @@
 
         &.free {
           background-color: #CECECE;
+        }
+
+        &.eden {
+          background-color: var(--eden);
+        }
+        &.survivor {
+          background-color: var(--survivor);
+        }
+        &.tenured {
+          background-color: var(--tenured);
         }
       }
     }

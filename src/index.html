@@ -158,40 +158,41 @@
 <script>
     const arr = new Array(6 * 8)
         .fill('free');
-    arr[0] = null;
-    arr[1] = null;
-    arr[2] = 'marked';
-    arr[3] = null;
-    arr[4] = 'marked';
-    arr[5] = null;
-    arr[6] = null;
+    arr[0] = 'eden';
+    arr[1] = 'eden';
+    arr[2] = 'tenured';
+    arr[3] = 'tenured';
+    arr[4] = 'tenured';
+    arr[5] = 'eden';
+    arr[6] = 'eden';
 
-    arr[10]= null;
-    arr[11]= 'marked';
-    arr[13]= null;
 
-    arr[16]= null;
-    arr[17]= 'marked';
-    arr[18]= null;
-    arr[21]= null;
+    arr[8]= 'eden';
+    arr[9]= 'eden';
+    arr[10]= 'eden';
+    arr[11]= 'tenured';
+    arr[12]= 'survivor';
+    arr[13]= 'survivor';
 
-    arr[25]= null;
-    arr[28]= null;
-    arr[29]= 'marked';
-    arr[30]= null;
+    arr[17]= 'tenured';
+    arr[18]= 'survivor';
+    arr[19]= 'eden';
+    arr[20]= 'eden';
+    arr[21]= 'survivor';
 
-    arr[32]= null;
-    arr[35]= null;
-    arr[37]= null;
-    arr[38]= null;
+    arr[26]= 'survivor';
+    arr[27]= 'survivor';
+    arr[29]= 'tenured';
 
-    arr[40]='marked';
-    arr[41]=null;
-    arr[42]=null;
-    arr[44]=null;
-    arr[45]=null;
+    arr[35]= 'eden';
+    arr[37]= 'eden';
 
-    ['marked',,,,'marked',,,,,,,,,,,'free',,,,,,,,,,'free']
+    arr[40]='tenured';
+    arr[43]='eden';
+    arr[44]='eden';
+    arr[46]='survivor';
+    arr[47]='survivor';
+
     createGrid('#memory-grid .grid', 6, 8, arr);
 </script>
 
