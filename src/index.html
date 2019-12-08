@@ -156,7 +156,43 @@
 </div>
 
 <script>
-    createGrid('#memory-grid .grid', 6, 8, ['marked',,,,'marked',,,,,,,,,,,'free',,,,,,,,,,'free'])
+    const arr = new Array(6 * 8)
+        .fill('free');
+    arr[0] = null;
+    arr[1] = null;
+    arr[2] = 'marked';
+    arr[3] = null;
+    arr[4] = 'marked';
+    arr[5] = null;
+    arr[6] = null;
+
+    arr[10]= null;
+    arr[11]= 'marked';
+    arr[13]= null;
+
+    arr[16]= null;
+    arr[17]= 'marked';
+    arr[18]= null;
+    arr[21]= null;
+
+    arr[25]= null;
+    arr[28]= null;
+    arr[29]= 'marked';
+    arr[30]= null;
+
+    arr[32]= null;
+    arr[35]= null;
+    arr[37]= null;
+    arr[38]= null;
+
+    arr[40]='marked';
+    arr[41]=null;
+    arr[42]=null;
+    arr[44]=null;
+    arr[45]=null;
+
+    ['marked',,,,'marked',,,,,,,,,,,'free',,,,,,,,,,'free']
+    createGrid('#memory-grid .grid', 6, 8, arr);
 </script>
 
 </body>
