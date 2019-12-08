@@ -30,6 +30,9 @@ async function takeScreenshots(page, mode) {
     await screenshot(page, `#memory-partition-marked`, `img/memory-partition-marked-${mode}.png`);
     await screenshot(page, `#memory-partition-copied`, `img/memory-copied-${mode}.png`);
 }
+async function takeScreenshotsGraph(page, mode) {
+    await screenshot(page, `.canvas`, `img/graph-${mode}.png`);
+}
 
 (async function() {
     const opts = {} || {slowMo: 100, headless: false};
@@ -39,10 +42,12 @@ async function takeScreenshots(page, mode) {
 
     await page.goto('http://localhost:1234');
 
-    await takeScreenshots(page, 'light');
+    // await takeScreenshots(page, 'light');
+    await takeScreenshotsGraph(page, 'light');
 
     await page.addStyleTag({content: 'body{background: #0E0E0E !important;}'});
-    await takeScreenshots(page,'dark');
+    // await takeScreenshots(page,'dark');
+    await takeScreenshotsGraph(page,'dark');
 
     await page.close();
     await browser.close();

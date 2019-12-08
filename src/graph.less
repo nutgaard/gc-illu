@@ -1,0 +1,89 @@
+:root {
+  --canvasWidth: 760px;
+  --canvasHeight: 15rem;
+  --objectSize: 20px;
+  --liveColor: #6D7ABB;
+  --deadColor: #FF5B5B;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.canvas {
+  position: relative;
+  width: var(--canvasWidth);
+  height: var(--canvasHeight);
+  background-color: #CECECE;
+}
+
+.arrow {
+  position: absolute;
+  display: inline-block;
+  background-color: var(--deadColor);
+  width: 3px;
+  transform-origin: top;
+  z-index: 0;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: -6px;
+    border: 8px solid transparent;
+    border-top-color: var(--deadColor);
+  }
+
+  &.alive {
+    background-color: var(--liveColor);
+    &:after {
+      border-top-color: var(--liveColor);
+    }
+  }
+}
+
+.gcroot {
+  background-color: var(--liveColor);
+  position: absolute;
+  z-index: 1;
+  top: 13rem;
+  padding: 0.125rem 0.5rem;
+  font-style: normal;
+}
+
+#gcroot-0 {left: 4.5rem;}
+#gcroot-1 {left: 14rem;}
+#gcroot-2 {left: 32rem;}
+
+.object {
+  background-color: #CECECE;
+  display: inline-block;
+  height: var(--objectSize);
+  width: var(--objectSize);
+  border: 3px solid var(--deadColor);
+  border-radius: 100%;
+  position: absolute;
+  z-index: 1;
+  &.alive {
+    border-color: var(--liveColor);
+  }
+}
+
+#object-0 {top: 1rem;left: 6rem;}
+#object-1 {top: 8rem;left: 6rem;}
+#object-2 {top: 6rem;left: 9rem;}
+#object-3 {top: 1rem;left: 15rem;}
+
+#object-4 {top: 10rem;left: 24rem;}
+#object-5 {top: 4rem;left: 21rem;}
+#object-6 {top: 8rem;left: 15rem;}
+#object-7 {top: 7rem;left: 2rem;}
+#object-8 {top: 4rem;left: 18rem;}
+#object-9 {top: 1rem;left: 21rem;}
+
+#object-10 {top: 5rem;left: 36rem;}
+#object-11 {top: 10rem;left: 31rem;}
+#object-12 {top: 6rem;left: 41rem;}
+#object-13 {top: 5rem;left: 33rem;}
+#object-14 {top: 3rem;left: 38rem;}

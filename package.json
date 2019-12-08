@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html --out-dir build/debug"
+    "start": "parcel src/index.html --out-dir build/debug",
+    "start:graph": "parcel src/graph.html --out-dir build/debug"
   },
   "author": "",
   "license": "ISC",
